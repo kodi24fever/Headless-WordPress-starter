@@ -1,0 +1,20 @@
+{
+    "name": "ubuntu\/workspace",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/advanced-custom-fields": "*",
+        "alesanchezr\/wpas-wordpress-dash": "dev-master",
+        "wp-cli\/wp-cli": "~0.22",
+        "psy\/psysh": "~0.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rigo\\": "wp-content/themes/rigo/src/php"
+        }
+    }
+}
