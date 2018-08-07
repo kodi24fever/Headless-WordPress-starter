@@ -18,3 +18,5 @@ require('setup_api.php');
 
 //including any monolitic tempaltes
 require('setup_templates.php');
+
+add_theme_support( 'post-thumbnails' );

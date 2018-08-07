@@ -27,3 +27,12 @@ $typeManager->newType([
         'taxonomies' => ['post_tag']
         ]
     ])->register();
+    
+$typeManager->newType([
+    'type'=> 'contact', 
+    'class' => 'Contact', 
+    'options' => [
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'taxonomies' => ['post_tag']
+        ]
+    ])->register();

@@ -18,3 +18,7 @@ $api = new \WPAS\Controller\WPASAPIController([
 $api->get([ 'path' => '/courses', 'controller' => 'SampleController:getDraftCourses' ]);
 $api->get([ 'path' => '/orders', 'controller' => 'OrdersController:getAllOrders' ]);
 $api->get([ 'path' => '/appointments', 'controller' => 'AppointmentController:setAppointment' ]);
+
+/****       CREATING METHODS FOR CONTACT FORMS       *************************************/
+$api->get([ 'path' => '/contact', 'controller' => 'ContactController:getContactForm' ]);
+$api->put([ 'path' => '/contact', 'controller' => 'ContactController:createContactForm' ]);
