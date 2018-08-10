@@ -46,7 +46,7 @@ class ContactController{
                 )
         );
         
-        $chair = wp_insert_post($post_arr);
+        $chair = wp_insert_post($my_post);
         
         if($chair !== 0){
             return new WP_REST_Response(

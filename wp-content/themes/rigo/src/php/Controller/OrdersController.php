@@ -2,6 +2,7 @@
 namespace Rigo\Controller;
 
 use Rigo\Types\Order;
+use WP_REST_Response;
 
 class OrdersController{
     
@@ -26,5 +27,49 @@ class OrdersController{
         
         return $query->posts;
     }
+    
+    
+    public function submitOrder($request){
+        $data = $request->get_json_params();
+        //print_r($data);
+        //die;
+        
+        $my_post = array(
+            'post_title' => '',
+            'post_content'  => '',
+            'post_status' => 'publish',
+            'post_type'  => 'order',
+            'meta_input' => array(
+                'subject' => $data["subject"],
+                'comment' => $data["comment"],
+                'boatMake' => $data["boatMake"],
+                'boatModel' => $data["boatModel"],
+                'boatLength' => $data["boatLength"],
+                'hullID' => $data["hullID"],
+                'numberOfEngines' => $data["numberOfEngines"],
+                'engineYear' => $data["engineYear"],
+                'engineModel' => $data["engineModel"],
+                'engineHP' => $data["engineHP"],
+                'engineID' => $data["engineID"],
+                'engineSerial' => $data["engineSerial"]
+                )
+        );
+        
+        $chair = wp_insert_post($my_post);
+        
+        if($chair !== 0){
+            return new WP_REST_Response(
+                array(
+                    "code" => "success",
+                    "message" => "successfully created"
+                ), 200);
+        }else{
+            return new WP_REST_Response(
+                array(
+                    "code"=>"error",
+                    "message" => "something went wrong while inserting"
+                ), 500);
+            }
+        }
 }
 ?>
