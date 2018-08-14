@@ -36,10 +36,20 @@ $typeManager->newType([
         'taxonomies' => ['post_tag']
         ]
     ])->register();
+    
 
 $typeManager->newType([
-    'type'=> 'user', 
-    'class' => 'User', 
+    'type'=> 'gallery', 
+    'class' => 'Gallery', 
+    'options' => [
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'taxonomies' => ['post_tag']
+        ]
+    ])->register();
+    
+$typeManager->newType([
+    'type'=> 'createuserr', 
+    'class' => 'CreateUser', 
     'options' => [
         'supports' => ['title', 'editor', 'thumbnail'],
         'taxonomies' => ['post_tag']

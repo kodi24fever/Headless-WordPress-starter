@@ -1,12 +1,10 @@
 <?php
 namespace Rigo\Controller;
-
-use Rigo\Types\User;
-
-class UserController{
+use Rigo\Types\Gallery;
+class GalleryController{
     
-    public function getUsers(){
-        $query = User::all([ 'status' => 'publish' ]);
+    public function getGallery(){
+        $query = Gallery::all(['post_status' => 'publish' ]);
         
         if ( $query->have_posts() ) {
         	while ( $query->have_posts() ) {
@@ -17,8 +15,9 @@ class UserController{
         		foreach($query->post->meta_keys as $key => $value){
         		    $query->post->meta_keys[$key] = maybe_unserialize($value[0]);
         		}
-        		//Include the Featured Image
-        		$query->post->thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), "large" );
+        		//Include my image
+        		$query->post->url = wp_get_attachment_image_src( $query->post->photo, 'large');
+        		$query->post->url = $query->post->url[0];
         	}
         	/* Restore original Post Data */
         	wp_reset_postdata();

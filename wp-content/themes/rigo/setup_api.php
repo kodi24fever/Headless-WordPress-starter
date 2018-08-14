@@ -20,7 +20,7 @@ $api->get([ 'path' => '/courses', 'controller' => 'SampleController:getDraftCour
 
 /******USER CREATION ENDPOINT
 */
-$api->get([ 'path' => '/user', 'controller' => 'UserController:getUsers' ]);
+$api->put([ 'path' => '/createUser', 'controller' => 'CreateUserController:createUser' ]);
 
 //*******************/
 
@@ -36,3 +36,8 @@ $api->get([ 'path' => '/contact',
         ]);
         
 $api->put([ 'path' => '/contact', 'controller' => 'ContactController:createContactForm' ]);
+
+
+
+
+$api->get([ 'path' => '/gallery', 'controller' => 'GalleryController:getGallery' ]);
