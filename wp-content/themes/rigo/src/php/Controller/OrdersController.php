@@ -36,6 +36,7 @@ class OrdersController{
         
         $my_post = array(
             'post_title' => '',
+            'post_author' => 0,
             'post_content'  => '',
             'post_status' => 'publish',
             'post_type'  => 'order',
