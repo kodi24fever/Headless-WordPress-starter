@@ -13,11 +13,15 @@ class GalleryController{
         		//Include the Meta Tags and Values
         		$query->post->meta_keys = get_post_meta($query->post->ID);
         		foreach($query->post->meta_keys as $key => $value){
-        		    $query->post->meta_keys[$key] = maybe_unserialize($value[0]);
+        		$query->post->meta_keys[$key] = maybe_unserialize($value[0]);
         		}
         		//Include my image
-        		$query->post->url = wp_get_attachment_image_src( $query->post->photo, 'large');
-        		$query->post->url = $query->post->url[0];
+        		/*$query->post->url = wp_get_attachment_image_src( $query->post->photo, 'large');
+        		$query->post->url = $query->post->url[0];*/
+        		
+        		//$query->post->url = get_attached_media( 'image', 148 );
+        		
+        		$query->post->url = get_post_galleries_images( $query->post->ID );
         	}
         	/* Restore original Post Data */
         	wp_reset_postdata();

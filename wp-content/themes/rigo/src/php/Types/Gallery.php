@@ -9,6 +9,7 @@ class Gallery extends BasePostType{
     function add_local_fields() {
             
             acf_add_local_field_group(array(
+                'post_content' => "[gallery size='full']",
             	'key' => 'gallery',
             	'title' => 'Gallery',
             	'fields' => array (

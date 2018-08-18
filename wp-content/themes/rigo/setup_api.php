@@ -20,18 +20,19 @@ $api->get([ 'path' => '/courses', 'controller' => 'SampleController:getDraftCour
 
 /******USER CREATION ENDPOINT
 */
+$api->get([ 'path' => '/createUser', 'controller' => 'CreateUserController:getUser' ]);
 $api->put([ 'path' => '/createUser', 'controller' => 'CreateUserController:createUser' ]);
 
 //*******************/
 
-$api->get([ 'path' => '/orders', 'controller' => 'OrdersController:getAllOrders' ]);
+$api->get([ 'path' => '/orders', 'controller' => 'OrdersController:getAllOrders']);
 $api->put([ 'path' => '/orders', 'controller' => 'OrdersController:submitOrder' ]);
 
 $api->get([ 'path' => '/appointments', 'controller' => 'AppointmentController:setAppointment' ]);
 
 /****       CREATING METHODS FOR CONTACT FORMS       *************************************/
 $api->get([ 'path' => '/contact',
-            'controller' => 'ContactController:getContactForm', 
+            'controller' => 'ContactController:getContactForm'
             // to hide api endpoint 'capability' => 'activate_plugins' 
         ]);
         

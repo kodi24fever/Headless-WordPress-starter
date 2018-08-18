@@ -5,9 +5,9 @@ use Rigo\Types\Order;
 use WP_REST_Response;
 
 class OrdersController{
-    
     public function getAllOrders(){
-        $query = Order::all(['post_status' => 'publish' ]);
+        $current_user = wp_get_current_user();
+        $query = Order::all(['post_status' => 'publish', 'author' => $current_user->ID ]);
         
         if ( $query->have_posts() ) {
         	while ( $query->have_posts() ) {
@@ -16,7 +16,7 @@ class OrdersController{
         		//Include the Meta Tags and Values
         		$query->post->meta_keys = get_post_meta($query->post->ID);
         		foreach($query->post->meta_keys as $key => $value){
-        		    $query->post->meta_keys[$key] = maybe_unserialize($value[0]);
+        		$query->post->meta_keys[$key] = maybe_unserialize($value[0]);
         		}
         		//Include the Featured Image
         		$query->post->thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), "large" );
@@ -34,9 +34,10 @@ class OrdersController{
         //print_r($data);
         //die;
         
+        $current_user = wp_get_current_user();
+        
         $my_post = array(
-            'post_title' => '',
-            'post_author' => 0,
+            'post_author' => $current_user->ID,
             'post_content'  => '',
             'post_status' => 'publish',
             'post_type'  => 'order',
