@@ -13,6 +13,19 @@ class Order extends BasePostType{
             	'key' => 'new_order',
             	'title' => 'Orders',
             	'fields' => array (
+            	    array (
+            			'key' => 'progress',
+            			'label' => 'Progress',
+            			'name' => 'progress',
+            			'type' => 'select',
+            			'choices' => array(
+            			    '' => '0%',
+            			    'w-25' => '25%',
+            			    'w-50' => '50%',
+            			    'w-75' => '75%',
+            			    'w-100' => '100%',
+            			    ),
+            		),
             		array (
             			'key' => 'the_subject',
             			'label' => 'Subject',
